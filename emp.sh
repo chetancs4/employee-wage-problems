@@ -1,33 +1,23 @@
 #!/bin/bash
-
-echo "Welcome To Employee Wage Computation Program"
-
-# Variable for checking the attendence
-attendence_chk=$((RANDOM%3)) #0/1/2
-
-# constant variables
-is_present_full_time=1
-is_present_part_time=2
-full_day_hour=8
-part_time_hour=4
-wage_per_hour=20
-
-
-# initializing the variables
-salary=0
-daily_hour=0
-
-case $attendence_chk in
-
-$is_present_full_time) daily_hour=8
-                       echo "The Employee is Present for Full day"
-                       ;;
-$is_present_part_time) daily_hour=4
-                       echo "The Employee is Present for Half day"
-                       ;;
-0) echo "The Employee is Absent"
-;;
+#attendence check and wage calculation correspondingly
+attendence=$(( RANDOM % 3 ))
+case $attendence in 
+    0)
+        echo "Employee is absent"
+        no_of_hrs_per_day=0
+        ;;
+    1)
+        echo "Employee is full time present"
+        no_of_hrs_per_day=8
+        ;;
+    2)
+        echo "Employee is part time present"
+        no_of_hrs_per_day=4
+        ;;
 esac
 
-salary=$(($daily_hour * $wage_per_hour))
-echo "Salary of an Employee is $salary"
+wage_per_hr=20
+wage_per_day=$(( wage_per_hr * no_of_hrs_per_day ))
+no_of_days_per_month=20
+wage_per_month=$(( wage_per_day * no_of_days_per_month ))
+echo "The Wage of the employee for the month is $wage_per_month"
