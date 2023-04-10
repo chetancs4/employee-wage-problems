@@ -1,2 +1,2 @@
 # employee-wage-problems
-abcd
+This is a Shell Scripting Employee wage Program.
